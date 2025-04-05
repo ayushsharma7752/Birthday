@@ -3,139 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Urvashi</title>
+  <title>Happy Birthday Urvashi 🎉</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #ffe6f0;
-      text-align: center;
       overflow-x: hidden;
+    }
+    .container {
+      text-align: center;
+      padding: 30px;
     }
     h1 {
       color: #ff1493;
-      font-size: 2.5em;
-      margin-top: 30px;
-    }
-    .buttons {
-      margin-top: 40px;
+      font-size: 2.5rem;
     }
     button {
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
       background-color: #ff69b4;
       color: white;
-      border: none;
-      padding: 15px 25px;
-      margin: 10px;
-      border-radius: 30px;
-      font-size: 1em;
       cursor: pointer;
-      transition: background 0.3s;
     }
     button:hover {
       background-color: #ff1493;
     }
-    .section {
-      display: none;
+    .card {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .roses-bg {
+      background-image: url('https://cdn.pixabay.com/photo/2020/03/11/14/36/roses-4922073_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      transition: 1s;
+    }
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .cake {
       margin-top: 30px;
     }
-    #cakeSection img {
-      width: 300px;
-      border-radius: 20px;
+    .candles {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
-    .card {
-      background-color: white;
-      width: 90%;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-    .heart {
-      animation: float 6s infinite ease-in-out;
-      position: absolute;
-      font-size: 2rem;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-600px); opacity: 0; }
-    }
-    #backBtn {
-      display: none;
-      margin-top: 20px;
+    .candle {
+      width: 10px;
+      height: 30px;
+      background: orange;
+      border-radius: 5px;
+      box-shadow: 0 -10px 10px yellow;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday Urvashi! 🎂</h1>
-
-  <div class="buttons">
-    <button onclick="startCelebration()">Celebrate Your Birthday 🎉</button>
+  <div class="container" id="main">
+    <h1>Happy Birthday Urvashi! 🎂</h1>
+    <button onclick="celebrate()">Celebrate Your Birthday 🎉</button>
     <button onclick="showCake()">Cut Your Cake 🎂</button>
-    <button onclick="showGreeting()">Open Greeting Card 💌</button>
-  </div>
+    <button onclick="showGreeting()">Open Greeting 💌</button>
 
-  <div id="celebrateSection" class="section"></div>
+    <div class="cake" id="cakeSection" style="display:none;">
+      <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" alt="Cake" width="300">
+      <audio id="birthdaySong" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" autoplay></audio>
+    </div>
 
-  <div id="cakeSection" class="section">
-    <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" alt="Birthday Cake">
-  </div>
-
-  <div id="greetingSection" class="section">
-    <div class="card">
+    <div class="card" id="greetingCard" style="display:none;">
       <h3><strong>Happy Birthday Urvashi! 🎂</strong></h3>
       <p>I love you sooo much ❤️</p>
       <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
-      <p>You're not just special... you're my everything 💫</p>
+      <p>You're not just special... you're my everything 🌙</p>
       <p>With every heartbeat, I fall for you even more ❤️</p>
       <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
-      <p>No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
-      <p>This day is all about <em>you</em>... but honestly, every day is yours in my heart 💌</p>
-      <p><strong>Forever yours,<br>Ayush 💍</strong></p>
+      <p>On your birthday, I just want to remind you...<br>
+      No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
+      <p>This day is all about <i>you</i>... but honestly, every day is yours in my heart 💌</p>
+      <h3><strong>Forever yours,<br>Ayush 💍</strong></h3>
+    </div>
+
+    <div class="candles" id="candles" style="display:none;">
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
     </div>
   </div>
 
-  <button id="backBtn" onclick="goBack()">🔙 Go Back</button>
+  <canvas class="confetti" id="confettiCanvas"></canvas>
 
-  <audio id="birthdaySong" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" preload="auto"></audio>
-
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-      document.getElementById('backBtn').style.display = 'inline-block';
-    }
-
-    function goBack() {
-      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-      document.getElementById('backBtn').style.display = 'none';
-    }
-
-    function startCelebration() {
-      showSection('celebrateSection');
-      const section = document.getElementById('celebrateSection');
-      section.innerHTML = '';
-      for (let i = 0; i < 50; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = ['🎉','🎊','🎈','💖','💘','💝','🌹'][Math.floor(Math.random() * 7)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = '100vh';
-        section.appendChild(heart);
+    function celebrate() {
+      // Confetti
+      const duration = 10 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
       }
-      setTimeout(() => goBack(), 10000);
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+
+      // Show candles
+      document.getElementById('candles').style.display = 'flex';
     }
 
     function showCake() {
-      showSection('cakeSection');
-      document.getElementById('birthdaySong').play();
-      setTimeout(() => goBack(), 10000);
+      document.getElementById("cakeSection").style.display = "block";
+      document.getElementById("birthdaySong").play();
     }
 
     function showGreeting() {
-      showSection('greetingSection');
-      document.getElementById('birthdaySong').play();
-      setTimeout(() => goBack(), 10000);
+      document.getElementById("greetingCard").style.display = "block";
+      document.body.classList.add("roses-bg");
     }
   </script>
 </body>
