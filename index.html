@@ -2,148 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Urvashi 🎉</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #ffeef5;
+      background-color: #ffe6f0;
+      overflow-x: hidden;
+    }
+    .container {
       text-align: center;
-      transition: background-image 1s ease-in-out;
-      background-size: cover;
-      background-position: center;
+      padding: 30px;
     }
-
     h1 {
-      color: deeppink;
+      color: #ff1493;
       font-size: 2.5rem;
-      margin-top: 30px;
     }
-
-    .button-container {
-      margin: 20px;
-    }
-
     button {
-      background-color: hotpink;
-      border: none;
-      color: white;
-      padding: 12px 24px;
       margin: 10px;
-      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff69b4;
+      color: white;
       cursor: pointer;
-      font-size: 1rem;
-      transition: transform 0.2s;
     }
-
     button:hover {
-      transform: scale(1.05);
+      background-color: #ff1493;
     }
-
     .card {
       max-width: 600px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+      margin: 40px auto;
       padding: 30px;
+      background-color: white;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      color: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
     }
-
-    .card h2 {
-      color: white;
-      margin-bottom: 15px;
+    .roses-bg {
+      background-image: url('https://cdn.pixabay.com/photo/2020/03/11/14/36/roses-4922073_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      transition: 1s;
     }
-
-    .heart, .rose, .candle, .strip {
-      position: fixed;
-      width: 30px;
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .cake {
+      margin-top: 30px;
+    }
+    .candles {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .candle {
+      width: 10px;
       height: 30px;
-      z-index: 99;
-      animation: fall 4s linear infinite;
-    }
-
-    @keyframes fall {
-      0% {transform: translateY(-50px);}
-      100% {transform: translateY(100vh);}
-    }
-
-    @media screen and (max-width: 600px) {
-      .card {
-        margin: 10px;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      button {
-        font-size: 0.9rem;
-      }
+      background: orange;
+      border-radius: 5px;
+      box-shadow: 0 -10px 10px yellow;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday Urvashi! 🎂</h1>
+  <div class="container" id="main">
+    <h1>Happy Birthday Urvashi! 🎂</h1>
+    <button onclick="celebrate()">Celebrate Your Birthday 🎉</button>
+    <button onclick="showCake()">Cut Your Cake 🎂</button>
+    <button onclick="showGreeting()">Open Greeting 💌</button>
 
-  <div class="button-container">
-    <button onclick="celebrate()">🎉 Celebrate Your Birthday</button>
-    <button onclick="showGreeting()">💌 See Greeting</button>
+    <div class="cake" id="cakeSection" style="display:none;">
+      <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" alt="Cake" width="300">
+      <audio id="birthdaySong" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" autoplay></audio>
+    </div>
+
+    <div class="card" id="greetingCard" style="display:none;">
+      <h3><strong>Happy Birthday Urvashi! 🎂</strong></h3>
+      <p>I love you sooo much ❤️</p>
+      <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
+      <p>You're not just special... you're my everything 🌙</p>
+      <p>With every heartbeat, I fall for you even more ❤️</p>
+      <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
+      <p>On your birthday, I just want to remind you...<br>
+      No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
+      <p>This day is all about <i>you</i>... but honestly, every day is yours in my heart 💌</p>
+      <h3><strong>Forever yours,<br>Ayush 💍</strong></h3>
+    </div>
+
+    <div class="candles" id="candles" style="display:none;">
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+    </div>
   </div>
 
-  <div id="greetingCard" class="card" style="display: none;">
-    <h2><strong>Happy Birthday Urvashi! 🎂</strong></h2>
-    <p>I love you sooo much ❤️</p>
-    <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
-    <p>You're not just special... you're my everything 💫</p>
-    <p>With every heartbeat, I fall for you even more 💖</p>
-    <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
-    <p>On your birthday, I just want to remind you...<br>
-       No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
-    <p>This day is all about <em>you</em>... but honestly, every day is yours in my heart 💌</p>
-    <h3><strong>Forever yours,<br>Ayush 💍</strong></h3>
-  </div>
+  <canvas class="confetti" id="confettiCanvas"></canvas>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    const hearts = ['❤️','💖','💘','💕','💗'];
-    const roses = ['🌹','🌺'];
-    const candles = ['🕯️'];
-    const strips = ['🎊','🎉'];
-
-    function randomItem(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    function createEffect(symbol, className) {
-      const span = document.createElement("span");
-      span.className = className;
-      span.textContent = symbol;
-      span.style.left = Math.random() * 100 + "vw";
-      span.style.top = "-30px";
-      document.body.appendChild(span);
-
-      setTimeout(() => {
-        span.remove();
-      }, 4000);
-    }
-
     function celebrate() {
-      const interval = setInterval(() => {
-        createEffect(randomItem(hearts), "heart");
-        createEffect(randomItem(roses), "rose");
-        createEffect(randomItem(candles), "candle");
-        createEffect(randomItem(strips), "strip");
-      }, 200);
+      // Confetti
+      const duration = 10 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 }
+        }));
+      }, 250);
 
-      setTimeout(() => clearInterval(interval), 5000);
+      // Show candles
+      document.getElementById('candles').style.display = 'flex';
+    }
+
+    function showCake() {
+      document.getElementById("cakeSection").style.display = "block";
+      document.getElementById("birthdaySong").play();
     }
 
     function showGreeting() {
       document.getElementById("greetingCard").style.display = "block";
-      document.body.style.backgroundImage = "url('https://ayushsharma7752.github.io/Birthday/assets/urvashi-bg.jpg')";
+      document.body.classList.add("roses-bg");
     }
   </script>
 </body>
