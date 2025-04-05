@@ -1,151 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Urvashi 🎉</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Urvashi! 🎉</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffe6f0;
-      overflow-x: hidden;
-    }
-    .container {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffeaf4;
       text-align: center;
-      padding: 30px;
     }
+
     h1 {
       color: #ff1493;
-      font-size: 2.5rem;
+      margin-top: 50px;
+      font-size: 2.5em;
     }
-    button {
-      margin: 10px;
-      padding: 12px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
+
+    .card {
+      background-color: white;
+      padding: 30px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #greetBtn,
+    #celebrateBtn {
       background-color: #ff69b4;
       color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      margin: 10px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
+
+    #greetBtn:hover,
+    #celebrateBtn:hover {
       background-color: #ff1493;
     }
-    .card {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      position: relative;
-      z-index: 1;
-    }
-    .roses-bg {
-      background-image: url('https://cdn.pixabay.com/photo/2020/03/11/14/36/roses-4922073_1280.jpg');
+
+    #greetingCard {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      background-image: url("WhatsApp Image 2025-04-05 at 11.13.53 PM.jpeg");
       background-size: cover;
       background-position: center;
-      transition: 1s;
-    }
-    .confetti {
-      position: absolute;
+      background-repeat: no-repeat;
+      position: fixed;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    .cake {
-      margin-top: 30px;
-    }
-    .candles {
-      margin: 20px auto;
+      z-index: 1000;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
-      gap: 10px;
+      align-items: center;
+      flex-direction: column;
     }
-    .candle {
-      width: 10px;
-      height: 30px;
-      background: orange;
-      border-radius: 5px;
-      box-shadow: 0 -10px 10px yellow;
+
+    .greeting-content {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container" id="main">
-    <h1>Happy Birthday Urvashi! 🎂</h1>
-    <button onclick="celebrate()">Celebrate Your Birthday 🎉</button>
-    <button onclick="showCake()">Cut Your Cake 🎂</button>
-    <button onclick="showGreeting()">Open Greeting 💌</button>
-
-    <div class="cake" id="cakeSection" style="display:none;">
-      <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" alt="Cake" width="300">
-      <audio id="birthdaySong" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" autoplay></audio>
-    </div>
-
-    <div class="card" id="greetingCard" style="display:none;">
-      <h3><strong>Happy Birthday Urvashi! 🎂</strong></h3>
-      <p>I love you sooo much ❤️</p>
-      <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
-      <p>You're not just special... you're my everything 🌙</p>
-      <p>With every heartbeat, I fall for you even more ❤️</p>
-      <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
-      <p>On your birthday, I just want to remind you...<br>
+  <h1>Happy Birthday Urvashi! 🎂</h1>
+  <div class="card">
+    <h2>Happy Birthday Urvashi! 🎂</h2>
+    <p>I love you sooo much ❤️</p>
+    <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
+    <p>You're not just special... you're my everything 💫</p>
+    <p>With every heartbeat, I fall for you even more 💖</p>
+    <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
+    <p>On your birthday, I just want to remind you...<br>
       No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
-      <p>This day is all about <i>you</i>... but honestly, every day is yours in my heart 💌</p>
-      <h3><strong>Forever yours,<br>Ayush 💍</strong></h3>
-    </div>
+    <p>This day is all about <em>you</em>... but honestly, every day is yours in my heart 💌</p>
+    <p><strong>Forever yours, <br>Ayush 💍</strong></p>
+  </div>
+  <button id="celebrateBtn">🎉 Celebrate Your Birthday</button>
+  <button id="greetBtn">💖 See Greeting</button>
 
-    <div class="candles" id="candles" style="display:none;">
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
-      <div class="candle"></div>
+  <div id="greetingCard">
+    <div class="greeting-content">
+      <h2>Happy Birthday Urvashi! 🎂</h2>
+      <p>I love you sooo much ❤️</p>
+      <p>You're not just special... you're my everything 💫</p>
+      <p>With every heartbeat, I fall for you even more 💖</p>
+      <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
+      <p>Forever yours, <br><strong>Ayush 💍</strong></p>
     </div>
   </div>
 
-  <canvas class="confetti" id="confettiCanvas"></canvas>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
-    function celebrate() {
-      // Confetti
-      const duration = 10 * 1000;
-      const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
-      function randomInRange(min, max) {
-        return Math.random() * (max - min) + min;
+    const emojis = ["🎉", "🎊", "🎈", "💖", "🌹", "🕯️", "❤️"];
+
+    function createFloatingEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = 3 + Math.random() * 4 + "s";
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 5000);
+    }
+
+    document.getElementById("celebrateBtn").addEventListener("click", function () {
+      for (let i = 0; i < 80; i++) {
+        setTimeout(createFloatingEmoji, i * 100);
       }
-      const interval = setInterval(function () {
-        const timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-        const particleCount = 50 * (timeLeft / duration);
-        confetti(Object.assign({}, defaults, {
-          particleCount,
-          origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 }
-        }));
-      }, 250);
+    });
 
-      // Show candles
-      document.getElementById('candles').style.display = 'flex';
-    }
-
-    function showCake() {
-      document.getElementById("cakeSection").style.display = "block";
-      document.getElementById("birthdaySong").play();
-    }
-
-    function showGreeting() {
-      document.getElementById("greetingCard").style.display = "block";
-      document.body.classList.add("roses-bg");
-    }
+    document.getElementById("greetBtn").addEventListener("click", function () {
+      document.getElementById("greetingCard").style.display = "flex";
+    });
   </script>
 </body>
+
 </html>
