@@ -2,201 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Urvashi!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Urvashi</title>
   <style>
     body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      text-align: center;
       margin: 0;
       padding: 0;
-      background-color: #ffe6f0;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      text-align: center;
     }
-
-    .section {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    #home {
-      display: flex;
-    }
-
     h1 {
-      font-size: 2.5em;
-      color: #e91e63;
+      color: #d63384;
+      margin-top: 20px;
     }
-
-    .button-group button, .back-btn {
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      background-color: #ff4081;
+    .button-container {
+      margin-top: 40px;
+    }
+    button {
+      background-color: #ff69b4;
       color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .button-group button:hover, .back-btn:hover {
-      background-color: #e91e63;
-    }
-
-    .cake-img {
-      width: 250px;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 10px;
       cursor: pointer;
     }
-
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: #ff4081;
-      top: -10px;
-      animation: confetti 3s linear infinite;
-    }
-
-    @keyframes confetti {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(720deg); }
-    }
-
-    .card {
+    #cake-img {
+      display: none;
       width: 300px;
-      height: 200px;
-      background: url('https://cdn.pixabay.com/photo/2020/04/17/18/09/panda-5057322_960_720.png') no-repeat center/contain;
-      margin: 0 auto;
-      perspective: 1000px;
+      margin-top: 30px;
     }
-
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      transition: transform 1s;
-      transform-style: preserve-3d;
-      cursor: pointer;
+    #greeting-card {
+      display: none;
+      width: 400px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-
-    .card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front, .card-back {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      backface-visibility: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-    }
-
-    .card-back {
-      background: white;
-      color: #333;
-      transform: rotateY(180deg);
-      padding: 15px;
+    .back-btn {
+      display: none;
+      margin-top: 20px;
+      background-color: #6f42c1;
     }
   </style>
 </head>
 <body>
-  <div id="home" class="section">
-    <h1>🎉 Happy Birthday Urvashi! 🎉</h1>
-    <div class="button-group">
-      <button onclick="startCelebrate()">🎉 Celebrate Your Birthday</button>
-      <button onclick="startCake()">🎂 Cut Your Cake</button>
-      <button onclick="startGreeting()">💌 Read Greeting</button>
-    </div>
+  <h1>🎉 Happy Birthday Urvashi! 🎂</h1>
+  <div class="button-container" id="main-buttons">
+    <button onclick="startCelebration()">Celebrate Your Birthday</button>
+    <button onclick="cutCake()">Cut Your Cake</button>
+    <button onclick="showGreeting()">Open Greeting</button>
   </div>
 
-  <div id="celebrate" class="section"></div>
-  <div id="cake" class="section">
-    <img src="https://img.icons8.com/emoji/2x/birthday-cake.png" id="cake-img" class="cake-img" onclick="playCakeSong()"/>
+  <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" id="cake-img" onclick="playCakeSong()"/>
+
+  <div id="greeting-card">
+    <img src="https://img.icons8.com/emoji/2x/panda-emoji.png" width="80"/>
+    <p><strong>Happy Birthday Urvashi! 🎂 I love you sooo much ❤️<br>May your day be full of smiles, love, and all the cake you can eat!</strong></p>
   </div>
 
-  <div id="greeting" class="section">
-    <div class="card" onclick="flipCard(this)">
-      <div class="card-inner">
-        <div class="card-front"></div>
-        <div class="card-back">
-          <p>Happy Birthday Urvashi! 🎂<br>I love you sooo much ❤️<br>May your day be full of smiles, love, and cake!</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <button class="back-btn" id="back-btn" onclick="goBack()">🔙 Back</button>
 
-  <button class="back-btn" id="backBtn" style="display:none;" onclick="goBack()">🔙 Back</button>
-
-  <audio id="romanticMusic" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3?filename=happy-birthday-to-you-piano-version-141120.mp3" loop></audio>
-  <audio id="birthdaySong" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2f1f30930f.mp3?filename=happy-birthday-110354.mp3"></audio>
+  <audio id="cake-song" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3"></audio>
+  <audio id="greeting-song" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3"></audio>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'flex';
+    function startCelebration() {
+      document.body.style.backgroundImage = "url('https://i.gifer.com/YJ7k.gif')";
+      document.getElementById('main-buttons').style.display = 'none';
+      document.getElementById('back-btn').style.display = 'block';
+      setTimeout(() => {
+        alert("🎉 Enjoy your special day, Urvashi! 🎈");
+      }, 1000);
     }
 
-    function startCelebrate() {
-      showSection('celebrate');
-      for (let i = 0; i < 100; i++) {
-        let confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-        confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-      }
-      setTimeout(() => document.getElementById('backBtn').style.display = 'block', 10000);
+    function cutCake() {
+      document.getElementById('main-buttons').style.display = 'none';
+      document.getElementById('cake-img').style.display = 'block';
+      document.getElementById('back-btn').style.display = 'block';
     }
 
-    function startCake() {
-      showSection('cake');
-      document.getElementById('cake-img').src = "https://img.icons8.com/emoji/2x/birthday-cake.png";
-      document.getElementById('birthdaySong').pause();
-      setTimeout(() => document.getElementById('backBtn').style.display = 'block', 10000);
+    function showGreeting() {
+      document.getElementById('main-buttons').style.display = 'none';
+      document.getElementById('greeting-card').style.display = 'block';
+      document.getElementById('back-btn').style.display = 'block';
+      playGreetingSong();
     }
 
     function playCakeSong() {
-      const audio = document.getElementById('birthdaySong');
-      audio.currentTime = 0;
+      const audio = document.getElementById("cake-song");
       audio.play();
-      // Simulate candle blow by changing cake image
-      const cake = document.getElementById('cake-img');
-      cake.src = "https://cdn.pixabay.com/photo/2017/01/10/19/05/cake-1961782_1280.png";
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 10000);
     }
 
-    function startGreeting() {
-      showSection('greeting');
-      const music = document.getElementById('romanticMusic');
-      music.currentTime = 0;
-      music.play();
-      setTimeout(() => document.getElementById('backBtn').style.display = 'block', 10000);
-    }
-
-    function flipCard(card) {
-      card.classList.toggle('flipped');
+    function playGreetingSong() {
+      const audio = document.getElementById("greeting-song");
+      audio.play();
     }
 
     function goBack() {
-      document.getElementById('romanticMusic').pause();
-      document.getElementById('birthdaySong').pause();
-      document.getElementById('romanticMusic').currentTime = 0;
-      document.getElementById('birthdaySong').currentTime = 0;
-      showSection('home');
-      document.getElementById('backBtn').style.display = 'none';
+      document.body.style.backgroundImage = "none";
+      document.getElementById('main-buttons').style.display = 'block';
+      document.getElementById('cake-img').style.display = 'none';
+      document.getElementById('greeting-card').style.display = 'none';
+      document.getElementById('back-btn').style.display = 'none';
+      document.getElementById('cake-song').pause();
+      document.getElementById('greeting-song').pause();
     }
-
-    // Start with Home visible
-    window.onload = () => {
-      showSection('home');
-    };
-  </script>
-</body>
-</html>
+  </sc
