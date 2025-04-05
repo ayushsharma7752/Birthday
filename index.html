@@ -10,41 +10,12 @@
       padding: 0;
       background-color: #ffe6f0;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
-
-    .balloons {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .balloon {
-      position: absolute;
-      bottom: -100px;
-      width: 50px;
-      height: 70px;
-      background-color: rgba(255, 192, 203, 0.7);
-      border-radius: 50%;
-      animation: float 10s infinite ease-in;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(-120vh) rotate(360deg);
-      }
+      overflow-x: hidden;
+      text-align: center;
     }
 
     .container {
-      text-align: center;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     h1 {
@@ -54,37 +25,114 @@
     }
 
     .cake-img {
-      max-width: 250px;
-      margin-top: 20px;
+      width: 250px;
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+
+    #greetingBox {
+      display: none;
+      background: white;
+      color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 400px;
+      margin: 30px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #ff4081;
+      top: -10px;
+      animation: confetti 3s linear infinite;
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(720deg); }
     }
   </style>
 </head>
 <body>
-  <div class="balloons" id="balloons"></div>
-
   <div class="container">
     <h1>🎉 Happy Birthday Urvashi! 🎉</h1>
     <img
       src="https://cdn.pixabay.com/photo/2017/01/10/19/05/cake-1961782_1280.png"
       alt="Cake"
       class="cake-img"
+      id="cake"
     />
+
+    <div class="buttons">
+      <button onclick="celebrate()">🎉 Celebrate Your Birthday</button>
+      <button onclick="cutCake()">🎂 Cut Your Cake</button>
+      <button onclick="showGreeting()">💌 Read Greeting</button>
+    </div>
+
+    <div id="greetingBox">
+      <p>
+        Happy Birthday Urvashi! 🎂<br />
+        I love you sooo much ❤️<br />
+        May your day be full of smiles, love, and all the cake you can eat!
+      </p>
+    </div>
   </div>
 
-  <script>
-    // Create balloons
-    const colors = ["#f48fb1", "#81d4fa", "#aed581", "#ffd54f", "#ff8a65"];
-    const balloonContainer = document.getElementById("balloons");
+  <!-- 🔊 Background Romantic Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3?filename=happy-birthday-to-you-piano-version-141120.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-    for (let i = 0; i < 50; i++) {
-      const b = document.createElement("div");
-      b.classList.add("balloon");
-      b.style.left = Math.random() * 100 + "vw";
-      b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      b.style.animationDuration = 6 + Math.random() * 4 + "s";
-      balloonContainer.appendChild(b);
+  <script>
+    function celebrate() {
+      for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+        confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function cutCake() {
+      const cake = document.getElementById("cake");
+      cake.style.transform = "scale(1.1)";
+      setTimeout(() => {
+        cake.style.transform = "scale(1)";
+      }, 300);
+    }
+
+    function showGreeting() {
+      const box = document.getElementById("greetingBox");
+      box.style.display = "block";
     }
   </script>
 </body>
