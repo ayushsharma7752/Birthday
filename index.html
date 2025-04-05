@@ -11,6 +11,9 @@
       text-align: center;
       margin: 0;
       padding: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease;
     }
     h1 {
       color: #d63384;
@@ -33,6 +36,8 @@
       display: none;
       width: 300px;
       margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     #greeting-card {
       display: none;
@@ -58,7 +63,7 @@
     <button onclick="showGreeting()">Open Greeting</button>
   </div>
 
-  <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" id="cake-img" onclick="playCakeSong()"/>
+  <img src="https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_1280.jpg" id="cake-img" onclick="playCakeSong()" alt="Birthday Cake" />
 
   <div id="greeting-card">
     <img src="https://img.icons8.com/emoji/2x/panda-emoji.png" width="80"/>
@@ -67,23 +72,32 @@
 
   <button class="back-btn" id="back-btn" onclick="goBack()">🔙 Back</button>
 
-  <audio id="cake-song" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3"></audio>
-  <audio id="greeting-song" src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3"></audio>
+  <audio id="cake-song">
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="greeting-song">
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/22/audio_bfa5b924b5.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     function startCelebration() {
-      document.body.style.backgroundImage = "url('https://i.gifer.com/YJ7k.gif')";
       document.getElementById('main-buttons').style.display = 'none';
-      document.getElementById('back-btn').style.display = 'block';
       setTimeout(() => {
-        alert("🎉 Enjoy your special day, Urvashi! 🎈");
-      }, 1000);
+        document.body.style.backgroundImage = "url('https://media.giphy.com/media/3o6ZsYm5bR6Dq3aFLq/giphy.gif')";
+        document.getElementById('back-btn').style.display = 'block';
+      }, 500);
+
+      setTimeout(() => {
+        document.body.style.backgroundImage = "none";
+      }, 10000);
     }
 
     function cutCake() {
       document.getElementById('main-buttons').style.display = 'none';
       document.getElementById('cake-img').style.display = 'block';
       document.getElementById('back-btn').style.display = 'block';
+      playCakeSong();
     }
 
     function showGreeting() {
@@ -113,7 +127,14 @@
       document.getElementById('cake-img').style.display = 'none';
       document.getElementById('greeting-card').style.display = 'none';
       document.getElementById('back-btn').style.display = 'none';
-      document.getElementById('cake-song').pause();
-      document.getElementById('greeting-song').pause();
+
+      const cakeAudio = document.getElementById("cake-song");
+      const greetingAudio = document.getElementById("greeting-song");
+      cakeAudio.pause();
+      cakeAudio.currentTime = 0;
+      greetingAudio.pause();
+      greetingAudio.currentTime = 0;
     }
-  </sc
+  </script>
+</body>
+</html>
