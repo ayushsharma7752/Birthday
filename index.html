@@ -1,158 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Urvashi! 🎉</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Urvashi 🎉</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ffeaf4;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffeef5;
       text-align: center;
+      transition: background-image 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
     }
 
     h1 {
-      color: #ff1493;
-      margin-top: 50px;
-      font-size: 2.5em;
+      color: deeppink;
+      font-size: 2.5rem;
+      margin-top: 30px;
+    }
+
+    .button-container {
+      margin: 20px;
+    }
+
+    button {
+      background-color: hotpink;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
 
     .card {
-      background-color: white;
-      padding: 30px;
-      margin: 40px auto;
-      width: 90%;
       max-width: 600px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      color: #fff;
     }
 
-    #greetBtn,
-    #celebrateBtn {
-      background-color: #ff69b4;
+    .card h2 {
       color: white;
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      margin: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      margin-bottom: 15px;
     }
 
-    #greetBtn:hover,
-    #celebrateBtn:hover {
-      background-color: #ff1493;
-    }
-
-    #greetingCard {
-      display: none;
-      height: 100vh;
-      width: 100%;
-      background-image: url("WhatsApp Image 2025-04-05 at 11.13.53 PM.jpeg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    .heart, .rose, .candle, .strip {
       position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      width: 30px;
+      height: 30px;
+      z-index: 99;
+      animation: fall 4s linear infinite;
     }
 
-    .greeting-content {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px 40px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 80%;
+    @keyframes fall {
+      0% {transform: translateY(-50px);}
+      100% {transform: translateY(100vh);}
     }
 
-    .emoji {
-      position: absolute;
-      font-size: 2rem;
-      animation: floatUp 5s linear infinite;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
+    @media screen and (max-width: 600px) {
+      .card {
+        margin: 10px;
+        padding: 20px;
       }
 
-      50% {
-        opacity: 1;
+      h1 {
+        font-size: 2rem;
       }
 
-      100% {
-        transform: translateY(-10vh);
-        opacity: 0;
+      button {
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
-
 <body>
   <h1>Happy Birthday Urvashi! 🎂</h1>
-  <div class="card">
-    <h2>Happy Birthday Urvashi! 🎂</h2>
+
+  <div class="button-container">
+    <button onclick="celebrate()">🎉 Celebrate Your Birthday</button>
+    <button onclick="showGreeting()">💌 See Greeting</button>
+  </div>
+
+  <div id="greetingCard" class="card" style="display: none;">
+    <h2><strong>Happy Birthday Urvashi! 🎂</strong></h2>
     <p>I love you sooo much ❤️</p>
     <p>May your day be full of smiles, laughter, and all the cake you can eat! 🎉</p>
     <p>You're not just special... you're my everything 💫</p>
     <p>With every heartbeat, I fall for you even more 💖</p>
     <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
     <p>On your birthday, I just want to remind you...<br>
-      No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
+       No matter how far we are, you're always with me — in every thought, every dream, every moment 🌙✨</p>
     <p>This day is all about <em>you</em>... but honestly, every day is yours in my heart 💌</p>
-    <p><strong>Forever yours, <br>Ayush 💍</strong></p>
-  </div>
-  <button id="celebrateBtn">🎉 Celebrate Your Birthday</button>
-  <button id="greetBtn">💖 See Greeting</button>
-
-  <div id="greetingCard">
-    <div class="greeting-content">
-      <h2>Happy Birthday Urvashi! 🎂</h2>
-      <p>I love you sooo much ❤️</p>
-      <p>You're not just special... you're my everything 💫</p>
-      <p>With every heartbeat, I fall for you even more 💖</p>
-      <p>You make my world brighter, my heart lighter, and my life so much better 💕</p>
-      <p>Forever yours, <br><strong>Ayush 💍</strong></p>
-    </div>
+    <h3><strong>Forever yours,<br>Ayush 💍</strong></h3>
   </div>
 
   <script>
-    const emojis = ["🎉", "🎊", "🎈", "💖", "🌹", "🕯️", "❤️"];
+    const hearts = ['❤️','💖','💘','💕','💗'];
+    const roses = ['🌹','🌺'];
+    const candles = ['🕯️'];
+    const strips = ['🎊','🎉'];
 
-    function createFloatingEmoji() {
-      const emoji = document.createElement("div");
-      emoji.classList.add("emoji");
-      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.animationDuration = 3 + Math.random() * 4 + "s";
-      document.body.appendChild(emoji);
-
-      setTimeout(() => {
-        emoji.remove();
-      }, 5000);
+    function randomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    document.getElementById("celebrateBtn").addEventListener("click", function () {
-      for (let i = 0; i < 80; i++) {
-        setTimeout(createFloatingEmoji, i * 100);
-      }
-    });
+    function createEffect(symbol, className) {
+      const span = document.createElement("span");
+      span.className = className;
+      span.textContent = symbol;
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.top = "-30px";
+      document.body.appendChild(span);
 
-    document.getElementById("greetBtn").addEventListener("click", function () {
-      document.getElementById("greetingCard").style.display = "flex";
-    });
+      setTimeout(() => {
+        span.remove();
+      }, 4000);
+    }
+
+    function celebrate() {
+      const interval = setInterval(() => {
+        createEffect(randomItem(hearts), "heart");
+        createEffect(randomItem(roses), "rose");
+        createEffect(randomItem(candles), "candle");
+        createEffect(randomItem(strips), "strip");
+      }, 200);
+
+      setTimeout(() => clearInterval(interval), 5000);
+    }
+
+    function showGreeting() {
+      document.getElementById("greetingCard").style.display = "block";
+      document.body.style.backgroundImage = "url('https://ayushsharma7752.github.io/Birthday/assets/urvashi-bg.jpg')";
+    }
   </script>
 </body>
-
 </html>
